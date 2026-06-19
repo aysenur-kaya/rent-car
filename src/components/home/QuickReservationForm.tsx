@@ -23,7 +23,7 @@ export function QuickReservationForm() {
   return (
     <section
       id="rezervasyon"
-      className="relative pb-16 md:pb-20"
+      className="relative pt-8 pb-16 md:pb-20 md:pt-0"
       aria-labelledby="quick-reservation-heading"
     >
       <Container>

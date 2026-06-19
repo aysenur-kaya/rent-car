@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,6 +10,9 @@ import { Button } from "@/components/ui/Button";
 import { headerNavLinks, siteConfig } from "@/data/site";
 import { iconSm, iconMd } from "@/lib/styles";
 import { cn } from "@/lib/utils";
+
+const MOBILE_HEADER_OFFSET =
+  "top-[calc(4.25rem+env(safe-area-inset-top,0px))] md:top-[calc(5rem+env(safe-area-inset-top,0px))]";
 
 function isActiveLink(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
@@ -37,6 +40,8 @@ export function Header() {
   const isHome = pathname === "/";
   const isOverlay = isHome && !scrolled;
 
+  const closeMenu = useCallback(() => setIsOpen(false), []);
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 12);
     handleScroll();
@@ -54,6 +59,19 @@ export function Header() {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isOpen, closeMenu]);
 
   return (
     <motion.header
@@ -77,8 +95,9 @@ export function Header() {
         >
           <Link
             href="/"
-            className="group relative z-10 shrink-0"
+            className="group relative z-[110] shrink-0"
             aria-label={`${siteConfig.name} ana sayfa`}
+            onClick={closeMenu}
           >
             <BrandLogo />
           </Link>
@@ -110,7 +129,7 @@ export function Header() {
             })}
           </ul>
 
-          <div className="relative z-10 hidden shrink-0 xl:block">
+          <div className="relative z-[110] hidden shrink-0 xl:block">
             <Button
               href="/#rezervasyon"
               variant="gradient"
@@ -123,18 +142,22 @@ export function Header() {
 
           <button
             type="button"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => setIsOpen((open) => !open)}
             className={cn(
-              "relative z-10 flex size-10 items-center justify-center rounded-xl border transition-all duration-200 xl:hidden",
+              "relative z-[110] flex size-11 items-center justify-center rounded-xl border transition-all duration-200 xl:hidden",
               isOpen
-                ? "border-accent/50 bg-accent/10 text-accent"
-                : "border-border-on-dark bg-white/5 text-white backdrop-blur-sm"
+                ? "border-accent bg-accent/20 text-white shadow-[0_0_24px_rgba(239,68,68,0.35)]"
+                : "border-border-on-dark bg-white/5 text-white backdrop-blur-sm hover:border-white/25"
             )}
             aria-label={isOpen ? "Menüyü kapat" : "Menüyü aç"}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
           >
-            {isOpen ? <X className={iconMd} /> : <Menu className={iconMd} />}
+            {isOpen ? (
+              <X className={cn(iconMd, "text-accent")} aria-hidden="true" />
+            ) : (
+              <Menu className={iconMd} aria-hidden="true" />
+            )}
           </button>
         </nav>
       </Container>
@@ -142,21 +165,31 @@ export function Header() {
       <AnimatePresence>
         {isOpen && (
           <>
-            <motion.div
+            <motion.button
+              type="button"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm xl:hidden"
-              onClick={() => setIsOpen(false)}
-              aria-hidden="true"
+              className={cn(
+                "fixed inset-x-0 bottom-0 z-[90] bg-black/70 backdrop-blur-sm xl:hidden",
+                MOBILE_HEADER_OFFSET
+              )}
+              onClick={closeMenu}
+              aria-label="Menüyü kapat"
             />
             <motion.div
               id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobil menü"
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.22 }}
-              className="relative z-50 border-b border-border-on-dark bg-hero-bg/95 backdrop-blur-xl xl:hidden"
+              className={cn(
+                "fixed inset-x-0 z-[95] border-b border-border-on-dark bg-hero-bg/98 backdrop-blur-xl xl:hidden",
+                MOBILE_HEADER_OFFSET
+              )}
             >
               <Container className="py-5">
                 <ul className="space-y-1" role="list">
@@ -166,6 +199,7 @@ export function Header() {
                       <li key={link.href}>
                         <Link
                           href={link.href}
+                          onClick={closeMenu}
                           aria-current={active ? "page" : undefined}
                           className={cn(
                             "block rounded-xl px-4 py-3.5 text-body font-medium transition-colors",

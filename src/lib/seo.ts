@@ -3,7 +3,7 @@ import type { Car, FAQ } from "@/types";
 import type { BlogPost } from "@/types/blog";
 import { siteConfig } from "@/data/site";
 
-export const SITE_URL = "https://elitedrive.com";
+export const SITE_URL = "https://rent-car-sage-one.vercel.app";
 
 interface PageMetaOptions {
   title: string;

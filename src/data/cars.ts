@@ -51,8 +51,8 @@ export const cars: Car[] = [
       "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80",
     images: [
       "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=80",
-      "https://images.unsplash.com/photo-1617814076367-bef54f9db516?w=1200&q=80",
       "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=1200&q=80",
+      "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1200&q=80",
     ],
     description:
       "Mercedes-Benz C Class, zarif tasarımı ve ileri teknoloji donanımlarıyla premium segmentin en çok tercih edilen modellerinden biridir. Konfor ve prestij arayanlar için mükemmel seçim.",
@@ -116,7 +116,7 @@ export const cars: Car[] = [
     images: [
       "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=1200&q=80",
       "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1200&q=80",
-      "https://images.unsplash.com/photo-1494976388531-d1058498cdd8?w=1200&q=80",
+      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1200&q=80",
     ],
     description:
       "Renault Clio, şehir içi kullanım için ideal kompakt hatchback. Ekonomik yakıt tüketimi ve kolay park etme özellikleriyle öne çıkar.",
@@ -148,7 +148,7 @@ export const cars: Car[] = [
     images: [
       "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1200&q=80",
       "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=1200&q=80",
-      "https://images.unsplash.com/photo-1494976388531-d1058498cdd8?w=1200&q=80",
+      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1200&q=80",
     ],
     description:
       "Fiat Egea, uygun fiyatlı kiralama seçeneği arayanlar için mükemmel bir tercih. Geniş iç mekan ve düşük işletme maliyeti sunar.",

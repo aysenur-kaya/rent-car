@@ -6,7 +6,7 @@ import { ContactPageContent } from "./ContactPage";
 export const metadata: Metadata = buildPageMetadata({
   title: "İletişim",
   description:
-    "EliteDrive ile iletişime geçin. 7/24 destek hattı, WhatsApp ve e-posta ile bize ulaşabilirsiniz.",
+    "Velora Rent ile iletişime geçin. 7/24 destek hattı, WhatsApp ve e-posta ile bize ulaşabilirsiniz.",
   path: "/iletisim",
 });
 

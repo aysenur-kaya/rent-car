@@ -17,7 +17,7 @@ export function MissionVisionVisual() {
       <div className="absolute inset-0 overflow-hidden rounded-3xl shadow-2xl shadow-dark/15 ring-1 ring-black/5">
         <Image
           src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=85"
-          alt="Premium Mercedes sedan - EliteDrive araç filosu"
+          alt="Premium Mercedes sedan - Velora Rent araç filosu"
           fill
           className="object-cover"
           sizes="(max-width: 1024px) 100vw, 50vw"

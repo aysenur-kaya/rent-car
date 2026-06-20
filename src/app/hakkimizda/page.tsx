@@ -63,7 +63,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg shadow-black/5">
               <Image
                 src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80"
-                alt="EliteDrive ekibi ve premium araç filosu"
+                alt="Velora Rent ekibi ve premium araç filosu"
                 fill
                 loading="lazy"
                 className="object-cover"

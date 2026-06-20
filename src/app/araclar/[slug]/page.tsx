@@ -12,14 +12,17 @@ import {
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { CarGallery } from "@/components/cars/CarGallery";
+import { CarSeoSections } from "@/components/cars/CarSeoSections";
 import { ReservationForm } from "@/components/cars/ReservationForm";
 import { SimilarCars } from "@/components/cars/SimilarCars";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { cars, getCarBySlug } from "@/data/cars";
+import { getCarSeoContent } from "@/data/cars/seo-content";
 import {
-  buildPageMetadata,
   breadcrumbSchema,
+  buildPageMetadata,
   carRentalProductSchema,
+  faqPageSchema,
 } from "@/lib/seo";
 import { cardInteractive, iconMd, iconSm } from "@/lib/styles";
 import { formatPrice, cn } from "@/lib/utils";
@@ -58,6 +61,14 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
     notFound();
   }
 
+  const seoContent = getCarSeoContent(car.slug);
+
+  const breadcrumbs = [
+    { name: "Ana Sayfa", path: "/" },
+    { name: "Araçlar", path: "/araclar" },
+    { name: car.name, path: `/araclar/${car.slug}` },
+  ];
+
   const specs = [
     { icon: Fuel, label: "Yakıt", value: car.fuelType },
     { icon: Settings2, label: "Vites", value: car.transmission },
@@ -67,16 +78,14 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
     { icon: Shield, label: "Sigorta", value: car.insurance },
   ];
 
-  const breadcrumbs = [
-    { name: "Ana Sayfa", path: "/" },
-    { name: "Araçlar", path: "/araclar" },
-    { name: car.name, path: `/araclar/${car.slug}` },
-  ];
-
   return (
     <>
       <JsonLd
-        data={[breadcrumbSchema(breadcrumbs), carRentalProductSchema(car)]}
+        data={[
+          breadcrumbSchema(breadcrumbs),
+          carRentalProductSchema(car),
+          ...(seoContent ? [faqPageSchema(seoContent.faqs)] : []),
+        ]}
       />
 
       <section className="bg-background pb-12 pt-[calc(4.25rem+1.25rem+env(safe-area-inset-top,0px))] md:pb-16 md:pt-[calc(5rem+2rem+env(safe-area-inset-top,0px))]">
@@ -193,6 +202,8 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
           </div>
         </Container>
       </section>
+
+      {seoContent && <CarSeoSections car={car} content={seoContent} />}
 
       <SimilarCars currentSlug={car.slug} />
     </>

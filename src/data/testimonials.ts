@@ -34,7 +34,7 @@ export const testimonials: Testimonial[] = [
     role: "Öğretmen",
     rating: 4,
     comment:
-      "Ekonomik segment araç kiraladım, Fiat Egea beklentilerimi karşıladı. Uygun fiyat ve kaliteli hizmet bir arada. Teşekkürler EliteDrive!",
+      "Ekonomik segment araç kiraladım, Fiat Egea beklentilerimi karşıladı. Uygun fiyat ve kaliteli hizmet bir arada. Teşekkürler Velora Rent!",
     avatar: "EÖ",
   },
 ];

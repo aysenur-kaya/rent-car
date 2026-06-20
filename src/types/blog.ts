@@ -26,12 +26,19 @@ export interface BlogPost {
   excerpt: string;
   categoryId: BlogCategoryId;
   image: string;
+  imageAlt: string;
   readTimeMinutes: number;
   publishedAt: string;
   publishedAtISO: string;
+  updatedAtISO?: string;
   author: string;
   sections: BlogSection[];
   metaTitle: string;
   metaDescription: string;
   tags: string[];
+}
+
+export interface BlogTag {
+  slug: string;
+  label: string;
 }

@@ -116,7 +116,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           <div className="relative mb-10 aspect-[21/9] overflow-hidden rounded-2xl border border-border-on-dark">
             <BlogCoverImage
               src={post.image}
-              alt={post.title}
+              alt={post.imageAlt}
               priority
               sizes="(max-width: 1200px) 100vw, 1200px"
             />

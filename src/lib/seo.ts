@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import type { Car, FAQ } from "@/types";
 import type { BlogPost } from "@/types/blog";
+import type { LocationPage } from "@/types/location";
+import type { ServicePage } from "@/types/service-page";
 import { siteConfig } from "@/data/site";
 
 export const SITE_URL = "https://rent-car-sage-one.vercel.app";
@@ -76,6 +78,7 @@ export function localBusinessSchema() {
       "@type": "PostalAddress",
       streetAddress: siteConfig.address,
       addressLocality: "İstanbul",
+      addressRegion: "İstanbul",
       addressCountry: "TR",
     },
     openingHoursSpecification: {
@@ -93,6 +96,77 @@ export function localBusinessSchema() {
       closes: "23:59",
     },
     priceRange: "₺₺",
+  };
+}
+
+export function locationCarRentalSchema(location: LocationPage) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CarRental",
+    name: `${siteConfig.name} - ${location.name}`,
+    url: `${SITE_URL}/${location.slug}`,
+    image: `${SITE_URL}/og-default.jpg`,
+    description: location.metaDescription,
+    telephone: siteConfig.phone,
+    email: siteConfig.email,
+    areaServed: {
+      "@type": "Place",
+      name: location.areaServed,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: location.addressLocality,
+        addressRegion: "İstanbul",
+        addressCountry: "TR",
+      },
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: location.addressLocality,
+      addressRegion: "İstanbul",
+      addressCountry: "TR",
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "00:00",
+      closes: "23:59",
+    },
+    priceRange: "₺₺",
+    parentOrganization: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: SITE_URL,
+    },
+  };
+}
+
+export function serviceOfferingSchema(service: ServicePage) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    description: service.metaDescription,
+    url: `${SITE_URL}/${service.slug}`,
+    provider: {
+      "@type": "CarRental",
+      name: siteConfig.name,
+      url: SITE_URL,
+      telephone: siteConfig.phone,
+      email: siteConfig.email,
+    },
+    areaServed: {
+      "@type": "City",
+      name: "İstanbul",
+    },
+    serviceType: "Araç Kiralama",
   };
 }
 
@@ -144,7 +218,7 @@ export function carRentalProductSchema(car: Car) {
   };
 }
 
-export function faqPageSchema(faqs: FAQ[]) {
+export function faqPageSchema(faqs: Pick<FAQ, "question" | "answer">[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -177,7 +251,7 @@ export function articleSchema(post: BlogPost) {
     description: post.metaDescription,
     image: [imageUrl],
     datePublished: post.publishedAtISO,
-    dateModified: post.publishedAtISO,
+    dateModified: post.updatedAtISO ?? post.publishedAtISO,
     author: {
       "@type": "Organization",
       name: post.author,
@@ -217,12 +291,13 @@ export function buildArticleMetadata(post: BlogPost): Metadata {
       description: post.metaDescription,
       publishedTime: post.publishedAtISO,
       authors: [post.author],
+      modifiedTime: post.updatedAtISO ?? post.publishedAtISO,
       images: [
         {
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: post.title,
+          alt: post.imageAlt,
         },
       ],
     },

@@ -7,8 +7,10 @@ import { cardInteractive, iconMd } from "@/lib/styles";
 import { cn } from "@/lib/utils";
 import type { FAQ } from "@/types";
 
+type AccordionItem = Pick<FAQ, "id" | "question" | "answer">;
+
 interface AccordionProps {
-  items: FAQ[];
+  items: AccordionItem[];
   className?: string;
 }
 

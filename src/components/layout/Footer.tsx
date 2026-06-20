@@ -4,10 +4,10 @@ import { Container } from "@/components/ui/Container";
 import {
   navLinks,
   siteConfig,
-  footerServices,
-  footerLocations,
   footerCorporate,
 } from "@/data/site";
+import { locationPages } from "@/data/locations";
+import { servicePages } from "@/data/service-pages";
 import { iconSm } from "@/lib/styles";
 
 const socialLinks = [
@@ -73,9 +73,14 @@ export function Footer() {
               Hizmetler
             </h3>
             <ul className="space-y-2.5">
-              {footerServices.map((service) => (
-                <li key={service} className="text-small text-white/55">
-                  {service}
+              {servicePages.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={`/${service.slug}`}
+                    className="text-small text-white/55 transition-colors hover:text-white"
+                  >
+                    {service.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -86,9 +91,14 @@ export function Footer() {
               Lokasyonlar
             </h3>
             <ul className="space-y-2.5">
-              {footerLocations.map((location) => (
-                <li key={location} className="text-small text-white/55">
-                  {location}
+              {locationPages.map((location) => (
+                <li key={location.slug}>
+                  <Link
+                    href={`/${location.slug}`}
+                    className="text-small text-white/55 transition-colors hover:text-white"
+                  >
+                    {location.name}
+                  </Link>
                 </li>
               ))}
             </ul>

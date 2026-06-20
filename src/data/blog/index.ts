@@ -11,6 +11,17 @@ export {
   getBlogPostBySlug as findBlogPostBySlug,
   getRelatedPosts as findRelatedPosts,
 } from "./utils";
+export {
+  categoryPageSeo,
+  getAllBlogCategorySlugs,
+  getAllBlogTags,
+  getBlogTagBySlug,
+  getPostsByCategoryId,
+  getPostsByTagSlug,
+  getTagPageSeo,
+  isBlogCategorySlug,
+  slugifyBlogTag,
+} from "./taxonomy";
 
 import { blogPosts } from "./posts";
 import {

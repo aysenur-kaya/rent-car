@@ -9,7 +9,7 @@ export const siteConfig: SiteConfig = {
     "Türkiye'nin önde gelen premium araç kiralama firması. Yeni model araçlar, 7/24 destek ve uygun fiyat garantisi ile hizmetinizdeyiz.",
   phone: "+90 212 555 00 00",
   whatsapp: "+902125550000",
-  email: "info@elitedrive.com",
+  email: "info@velorarent.com",
   address: "Atatürk Havalimanı Terminal Binası, İstanbul",
   workingHours: "7/24 Açık",
   social: {
@@ -41,24 +41,6 @@ export const navLinks: NavLink[] = [
   { label: "Hakkımızda", href: "/hakkimizda" },
   { label: "SSS", href: "/sss" },
   { label: "İletişim", href: "/iletisim" },
-];
-
-export const footerServices = [
-  "Havalimanı Teslim",
-  "Otel Teslim",
-  "Şehir İçi Teslim",
-  "Kurumsal Kiralama",
-  "Günlük Kiralama",
-  "Haftalık Kiralama",
-  "Aylık Kiralama",
-];
-
-export const footerLocations = [
-  "İstanbul Havalimanı",
-  "Sabiha Gökçen Havalimanı",
-  "İstanbul Avrupa Yakası",
-  "İstanbul Anadolu Yakası",
-  "Taksim & Şişli",
 ];
 
 export const footerCorporate = [

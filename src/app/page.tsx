@@ -9,14 +9,22 @@ import { FAQ } from "@/components/home/FAQ";
 import { CTA } from "@/components/home/CTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqs } from "@/data/faq";
-import { siteConfig } from "@/data/site";
 import { buildPageMetadata, faqPageSchema } from "@/lib/seo";
 
-export const metadata: Metadata = buildPageMetadata({
-  title: "Ana Sayfa",
-  description: siteConfig.description,
-  path: "/",
-});
+const HOME_TITLE =
+  "İstanbul Araç Kiralama | Günlük, Haftalık ve Aylık Rent A Car | Velora Rent";
+
+const HOME_DESCRIPTION =
+  "İstanbul'da günlük, haftalık ve aylık araç kiralama hizmeti. Havalimanı teslim, yeni model araç filosu, uygun fiyatlar, hızlı rezervasyon ve 7/24 müşteri desteği ile güvenilir rent a car deneyimi.";
+
+export const metadata: Metadata = {
+  ...buildPageMetadata({
+    title: "İstanbul Araç Kiralama | Günlük, Haftalık ve Aylık Rent A Car",
+    description: HOME_DESCRIPTION,
+    path: "/",
+  }),
+  title: { absolute: HOME_TITLE },
+};
 
 export default function HomePage() {
   return (

@@ -26,7 +26,7 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
       <div className="relative aspect-[16/10] overflow-hidden bg-surface-dark">
         <BlogCoverImage
           src={post.image}
-          alt={post.title}
+          alt={post.imageAlt}
           className="transition-transform duration-500 ease-out group-hover:scale-[1.05]"
         />
         <div className="absolute left-3 top-3">

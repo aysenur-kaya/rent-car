@@ -125,8 +125,14 @@ export function ReservationForm({ car }: ReservationFormProps) {
               Rezervasyon Gönder
             </Button>
 
-            <Button href={whatsappUrl} external variant="whatsapp" className="w-full" size="lg">
-              <MessageCircle className={iconSm} aria-hidden="true" />
+            <Button
+              href={whatsappUrl}
+              external
+              variant="whatsapp"
+              size="lg"
+              className="w-full items-center justify-center gap-3 whitespace-nowrap px-4 text-base md:gap-2 md:px-8 md:text-body"
+            >
+              <MessageCircle className="size-5 shrink-0" aria-hidden="true" />
               WhatsApp ile Rezervasyon
             </Button>
           </div>

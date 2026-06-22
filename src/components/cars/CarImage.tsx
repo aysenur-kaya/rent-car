@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DEFAULT_CAR_IMAGE, resolveCarImage } from "@/data/cars/images";
 import { cn } from "@/lib/utils";
 
@@ -22,7 +22,14 @@ export function CarImage({
   sizes = "(max-width: 768px) 100vw, 50vw",
   fill = true,
 }: CarImageProps) {
-  const [imageSrc, setImageSrc] = useState(resolveCarImage(src));
+  const resolvedSrc = resolveCarImage(src);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    setHasError(false);
+  }, [resolvedSrc]);
+
+  const imageSrc = hasError ? DEFAULT_CAR_IMAGE : resolvedSrc;
 
   return (
     <Image
@@ -34,8 +41,8 @@ export function CarImage({
       className={cn("object-cover", className)}
       sizes={sizes}
       onError={() => {
-        if (imageSrc !== DEFAULT_CAR_IMAGE) {
-          setImageSrc(DEFAULT_CAR_IMAGE);
+        if (resolvedSrc !== DEFAULT_CAR_IMAGE) {
+          setHasError(true);
         }
       }}
     />

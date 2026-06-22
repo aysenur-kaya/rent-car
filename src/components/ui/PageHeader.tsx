@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/Container";
+import { siteHeaderOffsets } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 
 interface PageHeaderProps {
@@ -15,7 +16,7 @@ export function PageHeader({
   className,
 }: PageHeaderProps) {
   return (
-    <section className={cn("bg-hero-bg pb-12 pt-28 md:pb-16 md:pt-32", className)}>
+    <section className={cn(`bg-hero-bg pb-12 md:pb-16 ${siteHeaderOffsets.pageHeader}`, className)}>
       <Container>
         <div className="max-w-2xl animate-fade-up">
           <span className="badge-red mb-4">{badge}</span>

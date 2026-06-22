@@ -23,16 +23,21 @@ export function QuickReservationForm() {
   return (
     <section
       id="rezervasyon"
-      className="relative pt-8 pb-16 md:pb-20 md:pt-0"
+      className="relative overflow-hidden bg-background pb-16 pt-8 md:pb-20 md:pt-12 lg:pt-16 xl:pt-[4.5rem]"
       aria-labelledby="quick-reservation-heading"
     >
-      <Container>
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-hero-bg via-hero-bg/55 to-background md:h-56 lg:h-64"
+        aria-hidden="true"
+      />
+
+      <Container className="relative">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          className="rounded-2xl border border-border bg-surface p-5 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.1)] sm:p-8 lg:p-10"
+          className="rounded-2xl border border-white/70 bg-white/90 p-5 shadow-[0_16px_48px_-20px_rgba(0,0,0,0.14),0_1px_0_rgba(255,255,255,0.8)_inset] backdrop-blur-md sm:p-8 lg:p-10"
         >
           <div className="mb-6 md:mb-8">
             <h2 id="quick-reservation-heading" className="text-h2 text-foreground">

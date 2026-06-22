@@ -27,18 +27,18 @@ const base =
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-accent text-white shadow-[0_4px_20px_var(--accent-glow)] hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-[0_8px_28px_var(--accent-glow)]",
+    "bg-accent text-white shadow-[0_4px_16px_var(--accent-glow)] hover:-translate-y-px hover:bg-accent-hover hover:shadow-[0_6px_20px_var(--accent-glow)]",
   gradient:
-    "bg-[linear-gradient(135deg,#EF4444,#DC2626)] text-white shadow-[0_4px_24px_rgba(239,68,68,0.35)] hover:-translate-y-0.5 hover:bg-[linear-gradient(135deg,#DC2626,#991B1B)] hover:shadow-[0_8px_32px_rgba(239,68,68,0.42)]",
+    "bg-[linear-gradient(135deg,#EF4444,#DC2626)] text-white shadow-[0_4px_16px_var(--accent-glow)] hover:-translate-y-px hover:shadow-[0_6px_22px_var(--accent-glow)] hover:brightness-[1.03]",
   secondary:
-    "bg-dark text-white shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_12px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 hover:bg-dark-surface hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)]",
+    "bg-dark text-white shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_12px_rgba(0,0,0,0.08)] hover:-translate-y-px hover:bg-dark-surface hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)]",
   outline:
-    "border border-border-strong bg-surface text-foreground shadow-sm hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-background hover:shadow-md",
+    "border border-border-strong bg-surface text-foreground shadow-sm hover:-translate-y-px hover:border-foreground/20 hover:bg-background hover:shadow-md",
   ghost: "text-foreground hover:bg-foreground/[0.04]",
   glass:
-    "border border-border-on-dark bg-white/[0.06] text-white backdrop-blur-md hover:-translate-y-0.5 hover:border-accent hover:bg-white/[0.1] hover:shadow-[0_4px_20px_rgba(239,68,68,0.2)]",
+    "border border-border-on-dark bg-white/[0.06] text-white backdrop-blur-md hover:-translate-y-px hover:border-accent/60 hover:bg-white/[0.1] hover:shadow-[0_4px_16px_var(--accent-glow)]",
   whatsapp:
-    "bg-[#25D366] text-white shadow-[0_4px_12px_rgba(37,211,102,0.25)] hover:-translate-y-0.5 hover:bg-[#1fb855] hover:shadow-[0_4px_16px_rgba(37,211,102,0.32)]",
+    "bg-[#25D366] text-white shadow-[0_4px_12px_rgba(37,211,102,0.25)] hover:-translate-y-px hover:bg-[#1fb855] hover:shadow-[0_4px_16px_rgba(37,211,102,0.32)]",
 };
 
 const sizes: Record<ButtonSize, string> = {

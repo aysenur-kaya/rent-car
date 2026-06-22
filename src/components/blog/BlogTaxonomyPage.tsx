@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema } from "@/lib/seo";
 import { section } from "@/lib/styles";
+import { siteHeaderOffsets } from "@/lib/layout";
 import type { BlogPost } from "@/types/blog";
 
 interface BreadcrumbItem {
@@ -30,7 +31,7 @@ export function BlogTaxonomyPage({
     <>
       <JsonLd data={[breadcrumbSchema(breadcrumbs)]} />
 
-      <section className="bg-hero-bg pb-8 pt-28 md:pt-32">
+      <section className={`bg-hero-bg pb-8 ${siteHeaderOffsets.pageHeader}`}>
         <Container>
           <nav aria-label="Breadcrumb">
             <ol className="mb-6 flex flex-wrap items-center gap-2 text-small text-text-muted-dark">

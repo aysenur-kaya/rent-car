@@ -25,6 +25,7 @@ import {
   faqPageSchema,
 } from "@/lib/seo";
 import { cardInteractive, iconMd, iconSm } from "@/lib/styles";
+import { siteHeaderOffsets } from "@/lib/layout";
 import { formatPrice, cn } from "@/lib/utils";
 
 interface CarDetailPageProps {
@@ -88,7 +89,7 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
         ]}
       />
 
-      <section className="bg-background pb-12 pt-[calc(4.25rem+1.25rem+env(safe-area-inset-top,0px))] md:pb-16 md:pt-[calc(5rem+2rem+env(safe-area-inset-top,0px))]">
+      <section className={`bg-background pb-12 md:pb-16 ${siteHeaderOffsets.pageContent}`}>
         <Container>
           <nav aria-label="Breadcrumb" className="mb-6 md:mb-8">
             <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-small text-muted">

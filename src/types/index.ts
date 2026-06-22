@@ -59,6 +59,7 @@ export interface SiteConfig {
   tagline: string;
   description: string;
   phone: string;
+  mobilePhone: string;
   whatsapp: string;
   email: string;
   address: string;

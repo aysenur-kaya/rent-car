@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { siteHeaderOffsets } from "@/lib/layout";
 import { iconMd } from "@/lib/styles";
 
 const container = {
@@ -56,7 +57,7 @@ export function Hero() {
       </div>
 
       {/* Centered content */}
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 pb-24 pt-[calc(4.5rem+env(safe-area-inset-top,0px))] text-center sm:px-6 md:pb-28 md:pt-[calc(5.5rem+env(safe-area-inset-top,0px))]">
+      <div className={`relative z-10 flex min-h-screen flex-col items-center justify-center px-4 pb-24 text-center sm:px-6 md:pb-28 ${siteHeaderOffsets.heroContent}`}>
         <motion.div
           variants={container}
           initial="hidden"
@@ -73,7 +74,7 @@ export function Hero() {
             className="text-hero-refined w-full text-white"
           >
             <span className="block">Sınırları Aşan</span>
-            <span className="mt-1 block text-accent md:mt-2">Konfor</span>
+            <span className="mt-1 block text-[#EF4444] md:mt-2">Konfor</span>
           </motion.h1>
 
           <motion.p
@@ -118,7 +119,7 @@ export function Hero() {
         >
           <Link
             href="#one-cikan-araclar"
-            className="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-white/50 transition-colors hover:text-accent"
+            className="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-white/50 transition-colors duration-200 hover:text-[#EF4444]"
           >
             Keşfet
           </Link>

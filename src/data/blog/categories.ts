@@ -5,7 +5,7 @@ export const blogCategories: Record<BlogCategoryId, BlogCategory> = {
     id: "arac-kiralama",
     label: "Araç Kiralama",
     badgeClass:
-      "border-accent/40 bg-accent/15 text-[#ffb4a2]",
+      "border-accent/35 bg-accent/10 text-red-300",
   },
   "surus-rehberi": {
     id: "surus-rehberi",
@@ -23,7 +23,7 @@ export const blogCategories: Record<BlogCategoryId, BlogCategory> = {
     id: "ipuclari",
     label: "İpuçları",
     badgeClass:
-      "border-amber-400/30 bg-amber-500/15 text-amber-200",
+      "border-accent/30 bg-accent/10 text-red-300",
   },
   guvenlik: {
     id: "guvenlik",

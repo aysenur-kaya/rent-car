@@ -8,6 +8,7 @@ export const siteConfig: SiteConfig = {
   description:
     "Türkiye'nin önde gelen premium araç kiralama firması. Yeni model araçlar, 7/24 destek ve uygun fiyat garantisi ile hizmetinizdeyiz.",
   phone: "+90 212 555 00 00",
+  mobilePhone: "+90 532 555 00 00",
   whatsapp: "+902125550000",
   email: "info@velorarent.com",
   address: "Atatürk Havalimanı Terminal Binası, İstanbul",

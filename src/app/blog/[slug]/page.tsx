@@ -24,6 +24,7 @@ import {
   SITE_URL,
 } from "@/lib/seo";
 import { iconSm, section } from "@/lib/styles";
+import { siteHeaderOffsets } from "@/lib/layout";
 
 interface BlogDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -67,7 +68,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     <>
       <JsonLd data={[breadcrumbSchema(breadcrumbs), articleSchema(post)]} />
 
-      <section className="bg-hero-bg pb-8 pt-28 md:pt-32">
+      <section className={`bg-hero-bg pb-8 ${siteHeaderOffsets.pageHeader}`}>
         <Container>
           <nav aria-label="Breadcrumb">
             <ol className="mb-6 flex flex-wrap items-center gap-2 text-small text-text-muted-dark">

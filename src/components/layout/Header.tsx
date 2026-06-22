@@ -4,15 +4,16 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Car } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { headerNavLinks, siteConfig } from "@/data/site";
-import { iconSm, iconMd } from "@/lib/styles";
+import { siteHeaderOffsets } from "@/lib/layout";
+import { iconMd } from "@/lib/styles";
 import { cn } from "@/lib/utils";
+import { Topbar } from "@/components/layout/Topbar";
 
-const MOBILE_HEADER_OFFSET =
-  "top-[calc(4.25rem+env(safe-area-inset-top,0px))] md:top-[calc(5rem+env(safe-area-inset-top,0px))]";
+const MOBILE_HEADER_OFFSET = siteHeaderOffsets.mobileMenu;
 
 function isActiveLink(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
@@ -21,15 +22,10 @@ function isActiveLink(pathname: string, href: string) {
 
 function BrandLogo() {
   return (
-    <div className="flex items-center gap-2.5">
-      <div className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-accent/50 bg-hero-bg/70 text-accent shadow-[0_0_20px_rgba(239,68,68,0.2)] backdrop-blur-sm transition-transform duration-300 group-hover:scale-[1.03] md:size-11">
-        <Car className={iconSm} aria-hidden="true" />
-      </div>
-      <span className="text-lg font-bold leading-none tracking-tight md:text-xl">
-        <span className="text-white">{siteConfig.brandPrimary}</span>{" "}
-        <span className="text-accent">{siteConfig.brandAccent}</span>
-      </span>
-    </div>
+    <span className="inline-flex items-center text-lg font-bold leading-none tracking-tight md:text-xl">
+      <span className="text-white">{siteConfig.brandPrimary}</span>{" "}
+      <span className="text-[#EF4444]">{siteConfig.brandAccent}</span>
+    </span>
   );
 }
 
@@ -75,34 +71,41 @@ export function Header() {
 
   return (
     <motion.header
-      initial={{ y: -12, opacity: 0 }}
+      initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
+      transition={{ duration: 0.45, ease: "easeOut" }}
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        "pt-[env(safe-area-inset-top,0px)]",
-        scrolled || !isHome
-          ? "border-b border-border-on-dark bg-hero-bg/85 shadow-[0_8px_32px_rgba(0,0,0,0.4)] backdrop-blur-xl"
-          : isHome
-            ? "bg-gradient-to-b from-hero-bg/55 via-hero-bg/20 to-transparent"
-            : "bg-transparent"
+        "pt-[env(safe-area-inset-top,0px)]"
       )}
     >
-      <Container>
-        <nav
-          className="relative flex h-[4.25rem] items-center justify-between md:h-20"
-          aria-label="Ana navigasyon"
-        >
-          <Link
+      <Topbar />
+
+      <div
+        className={cn(
+          "transition-all duration-300",
+          scrolled || !isHome
+            ? "border-b border-border-on-dark bg-[#0B0B0B]/95 shadow-[0_8px_32px_rgba(0,0,0,0.4)] backdrop-blur-xl"
+            : isHome
+              ? "bg-gradient-to-b from-[#0B0B0B]/70 via-[#0B0B0B]/25 to-transparent"
+              : "bg-[#0B0B0B]/90"
+        )}
+      >
+        <Container>
+          <nav
+            className="relative flex h-[4.25rem] items-center justify-between md:h-20"
+            aria-label="Ana navigasyon"
+          >
+            <Link
             href="/"
-            className="group relative z-[110] shrink-0"
+            className="relative z-[110] flex shrink-0 items-center"
             aria-label={`${siteConfig.name} ana sayfa`}
             onClick={closeMenu}
           >
             <BrandLogo />
-          </Link>
+            </Link>
 
-          <ul
+            <ul
             className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-0.5 xl:flex"
             role="list"
           >
@@ -114,12 +117,12 @@ export function Header() {
                     href={link.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "rounded-lg px-3.5 py-2.5 text-small font-medium transition-colors duration-200 lg:px-4",
+                      "rounded-lg px-3.5 py-2.5 text-small font-medium transition-all duration-200 lg:px-4",
                       active
-                        ? "text-accent"
+                        ? "bg-accent/10 font-semibold text-[#EF4444] shadow-[0_0_12px_rgba(239,68,68,0.12)]"
                         : isOverlay
-                          ? "text-white/82 hover:text-white"
-                          : "text-text-muted-dark hover:text-white"
+                          ? "text-white/82 hover:text-[#EF4444]"
+                          : "text-text-muted-dark hover:text-[#EF4444]"
                     )}
                   >
                     {link.label}
@@ -127,9 +130,9 @@ export function Header() {
                 </li>
               );
             })}
-          </ul>
+            </ul>
 
-          <div className="relative z-[110] hidden shrink-0 xl:block">
+            <div className="relative z-[110] hidden shrink-0 xl:block">
             <Button
               href="/#rezervasyon"
               variant="gradient"
@@ -138,29 +141,30 @@ export function Header() {
             >
               Hemen Kirala
             </Button>
-          </div>
+            </div>
 
-          <button
+            <button
             type="button"
             onClick={() => setIsOpen((open) => !open)}
             className={cn(
               "relative z-[110] flex size-11 items-center justify-center rounded-xl border transition-all duration-200 xl:hidden",
               isOpen
-                ? "border-accent bg-accent/20 text-white shadow-[0_0_24px_rgba(239,68,68,0.35)]"
-                : "border-border-on-dark bg-white/5 text-white backdrop-blur-sm hover:border-white/25"
+                ? "border-[#EF4444]/60 bg-accent/10 text-white shadow-[0_0_16px_var(--accent-glow)]"
+                : "border-border-on-dark bg-white/5 text-white backdrop-blur-sm hover:border-[#EF4444]/40"
             )}
             aria-label={isOpen ? "Menüyü kapat" : "Menüyü aç"}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
           >
             {isOpen ? (
-              <X className={cn(iconMd, "text-accent")} aria-hidden="true" />
+              <X className={cn(iconMd, "text-[#EF4444]")} aria-hidden="true" />
             ) : (
               <Menu className={iconMd} aria-hidden="true" />
             )}
-          </button>
-        </nav>
-      </Container>
+            </button>
+          </nav>
+        </Container>
+      </div>
 
       <AnimatePresence>
         {isOpen && (
@@ -202,10 +206,10 @@ export function Header() {
                           onClick={closeMenu}
                           aria-current={active ? "page" : undefined}
                           className={cn(
-                            "block rounded-xl px-4 py-3.5 text-body font-medium transition-colors",
+                            "block rounded-xl px-4 py-3.5 text-body font-medium transition-colors duration-200",
                             active
-                              ? "text-accent"
-                              : "text-white/85 hover:bg-white/5 hover:text-white"
+                              ? "bg-accent/10 font-semibold text-[#EF4444]"
+                              : "text-white/85 hover:bg-accent/5 hover:text-[#EF4444]"
                           )}
                         >
                           {link.label}

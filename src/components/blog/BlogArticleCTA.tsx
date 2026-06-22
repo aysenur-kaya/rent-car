@@ -4,9 +4,9 @@ import { iconSm } from "@/lib/styles";
 
 export function BlogArticleCTA() {
   return (
-    <div className="relative mt-12 overflow-hidden rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/20 via-white/[0.04] to-transparent p-8 text-center md:p-10">
+    <div className="relative mt-12 overflow-hidden rounded-2xl border border-accent/25 bg-gradient-to-br from-accent/10 via-white/[0.04] to-transparent p-8 text-center md:p-10">
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,107,74,0.18),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(239,68,68,0.12),transparent_60%)]"
         aria-hidden="true"
       />
       <div className="relative">
@@ -20,7 +20,7 @@ export function BlogArticleCTA() {
         <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="/araclar"
-            className="inline-flex items-center gap-2 rounded-xl bg-accent-gradient px-6 py-3 text-small font-semibold text-white shadow-[0_8px_24px_-8px_rgba(255,107,74,0.5)] transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 rounded-xl bg-[linear-gradient(135deg,#EF4444,#DC2626)] px-6 py-3 text-small font-semibold text-white shadow-[0_6px_20px_var(--accent-glow)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_var(--accent-glow)]"
           >
             Araçları İncele
             <ArrowRight className={iconSm} aria-hidden="true" />

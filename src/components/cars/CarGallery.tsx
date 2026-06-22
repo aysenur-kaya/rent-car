@@ -65,8 +65,8 @@ export function CarGallery({ images, alt, fallbackImage }: CarGalleryProps) {
               className={cn(
                 "relative aspect-[4/3] w-full min-w-0 overflow-hidden rounded-xl border-2 bg-surface transition-all",
                 activeIndex === index
-                  ? "border-accent shadow-[0_0_0_1px_rgba(239,68,68,0.25)]"
-                  : "border-border opacity-75 hover:border-border-strong hover:opacity-100"
+                  ? "border-[#EF4444] shadow-[0_0_0_1px_var(--accent-glow)]"
+                  : "border-border opacity-75 hover:border-accent/30 hover:opacity-100"
               )}
               aria-label={`${alt} görsel ${index + 1}`}
               aria-current={activeIndex === index ? "true" : undefined}
